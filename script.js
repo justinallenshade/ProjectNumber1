@@ -1,10 +1,10 @@
-console.log(`consol is working`);
-
 const button = document.querySelectorAll(`.button`);
 
 
-const buttonClick = function(){
-    console.log(`button Clicked`)
+async function buttonClick(event){
+    event.preventDefault();
+
+    console.log(`button Clicked ${event.target.value}`)
 };
 
 button.forEach(buttons => {
