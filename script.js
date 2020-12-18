@@ -100,7 +100,14 @@ async function buttonClick(event){
     console.log(`button Clicked ${user}`)
 
     if(user.length == computer.length && computer.length !== 0){
-        await compareArray();
+       await compareArray();
+        user = [];
+        if (computer.length !== 0){
+            computerChoice()
+        }
+    }
+
+    if (user.length >= 1 && computer.length == 0){
         user = []
     }
 };
@@ -114,6 +121,7 @@ async function compareArray(){
     for (let i = 0; i <= computer.length; i++){
         if(user[i] != computer[i]){
             console.log(`you messed up`)
+            computer = [];
         }
     }
 }
