@@ -9,19 +9,34 @@ const startButton = document.querySelector('#startButton');
 
 startButton.addEventListener('click', computerChoice);
 
+let addListener  = () =>{
+    button.forEach(button => {
+        button.addEventListener('click', buttonClick);
+    })
+}
+let removeListener = () =>{
+    button.forEach(button => {
+        button.removeEventListener(`click`, buttonClick);
+    })
+}
+addListener();
+
+
+let user = [];
+let computer = []
+
+
 async function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
-let computer = []
 
 async function computerChoice (){
     let randomNum = Math.floor(Math.random()*5);
     computer.push(randomNum);
     currentScore.innerText = computer.length;
 
-    
+    removeListener();
     for(let i=0; i< computer.length; i++){
         if (computer[i] == 0){
             await sleep(250);
@@ -60,16 +75,18 @@ async function computerChoice (){
             
         }
     }
-    console.log(`the computer array is ${computer}`)
-}
+    addListener();
 
-let user = [];
+    console.log(`the computer array is ${computer}`)
+    startButton.removeEventListener("click", computerChoice)
+}
 
 async function buttonClick(event){
     
     let userClick = event.target.value
     user.push(userClick);
    
+    removeListener();
     if (userClick == 0){
         botCenter.style.animationPlayState = "running";
         await sleep(1000);
@@ -96,6 +113,7 @@ async function buttonClick(event){
         await sleep(1000);
         botLeft.style.animationPlayState = "paused";
     }
+    addListener();
 
     console.log(`button Clicked ${user}`)
 
@@ -112,17 +130,12 @@ async function buttonClick(event){
     }
 };
 
-
-button.forEach(buttons => {
-    buttons.addEventListener('click', buttonClick)
-})
-
-async function compareArray(){
+function compareArray(){
     for (let i = 0; i <= computer.length; i++){
         if(user[i] != computer[i]){
             console.log(`you messed up`)
             computer = [];
+            startButton.addEventListener('click', computerChoice);
         }
     }
 }
-
