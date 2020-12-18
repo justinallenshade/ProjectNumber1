@@ -9,7 +9,7 @@ async function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-let computer = []
+let computer = [0,1,2,3,4,0,1,2,3,4]
 
 async function computerChoice (){
     let randomNum = Math.floor(Math.random()*5);
