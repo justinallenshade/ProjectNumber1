@@ -1,7 +1,7 @@
 
  @keyframes glowPurple {
     0% {
-        
+     
     }
     50% {
         background-color: rgb(231, 50, 231);
@@ -14,7 +14,7 @@
 }
 @keyframes glowRed {
     0%{
-        
+        box-shadow: none;
     }
     50% {
         color: rgb(184, 32, 32);
@@ -22,12 +22,12 @@
         box-shadow: 0 0 25px 15px rgb(110, 16, 16),0 0 25px 5px inset rgb(110, 16, 16);
     }
     100% {
-        
+        box-shadow: none;
     }
 }
 @keyframes glowGreen {
     0%{
-       
+        box-shadow: none;
     }
     50% {
         color: rgb(27, 156, 34);
@@ -35,12 +35,12 @@
         box-shadow: 0 0 25px 15px rgb(16, 90, 20),0 0 25px 5px inset rgb(16, 90, 20);
     }
     100% {
-        
+        box-shadow: none;
     }
 }
 @keyframes glowBlue {
     0%{
-        
+        box-shadow: none;
     }
     50% {
         color: rgb(69, 181, 195);
@@ -48,12 +48,12 @@
         box-shadow:  0 0 25px 15px rgb(8, 41, 112),0 0 25px 5px inset rgb(8, 41, 112);
     }
     100% {
-        
+        box-shadow: none;
     }
 }
 @keyframes glowYellow {
     0%{
-        
+        box-shadow: none;
     }
     50% {
         color: rgb(228, 225, 68);
@@ -61,7 +61,7 @@
         box-shadow: 0 0 25px 15px rgb(218, 199, 32), 0 0 25px 5px inset rgb(218, 199, 32);
     }
     100% {
-        
+        box-shadow: none;
     }
 }
 
