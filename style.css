@@ -138,3 +138,14 @@ body{
     animation: glowPurple step-end 1s infinite;
     animation-play-state: paused;
 }
+
+#loseScreen{
+    background-color: rgba(26, 83, 28, 0.986);
+    box-shadow: 0 0 5px 5px silver, 0 0 25px 25px black ;
+    grid-row: 1/5;
+    grid-column: 1/5;
+    font-size: 200%;
+    color: red;
+    z-index: -1;
+    opacity: 0;
+}

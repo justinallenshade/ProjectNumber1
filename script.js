@@ -7,6 +7,17 @@ const botCenter = document.querySelector(`#botCenter`);
 const currentScore = document.querySelector('#currentScore');
 const startButton = document.querySelector('#startButton');
 
+const loseScreen = document.querySelector("#loseScreen");
+const closeButton = document.querySelector('#closeButton');
+const finalScore = document.querySelector('#finalScore');
+
+
+let closeScreen = () => {
+    loseScreen.style.zIndex = "-1";
+    loseScreen.style.opacity = "0"
+}
+
+closeButton.addEventListener('click', closeScreen);
 startButton.addEventListener('click', computerChoice);
 
 let addListener  = () =>{
@@ -21,7 +32,7 @@ let removeListener = () =>{
 }
 addListener();
 
-
+let highScore = [];
 let user = [];
 let computer = [];
 let onStart = [0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4]
@@ -80,6 +91,13 @@ async function computerChoice (){
     computer.push(randomNum);
     currentScore.innerText = computer.length -1;
 
+
+    if (computer.length > highScore.length){
+        for(let i=0; i <computer.length; i++){
+            
+        }
+    }
+
     removeListener();
     for(let i=0; i< computer.length; i++){
         if (computer[i] == 0){
@@ -136,6 +154,7 @@ async function buttonClick(event){
         botCenter.style.animationPlayState = "running";
         await sleep(1000);
         botCenter.style.animationPlayState = "paused";
+
     }
     else if (userClick == 1){
         topLeft.style.animationPlayState = "running";
@@ -177,7 +196,9 @@ async function buttonClick(event){
 function compareArray(){
     for (let i = 0; i <= computer.length; i++){
         if(user[i] != computer[i]){
-            console.log(`you messed up`)
+            loseScreen.style.zIndex = "1";
+            loseScreen.style.opacity = "1"
+            finalScore.innerText = computer.length -1;
             computer = [];
             startButton.addEventListener('click', computerChoice);
         }

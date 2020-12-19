@@ -11,6 +11,8 @@
     <div class="heading">
         <h1 id="Title"> This is the title</h1>
         <input type="button" id="startButton" value="Start">
+
+
     </div>
 
     <div class="leftSection">
@@ -20,13 +22,8 @@
     </div>
 
     <div class="rightSection">
-        <p>
-            rules <br/> 
-            please click the button and wait <br/> 
-            not doing so will cause you to lose. <br/> 
-            If the button gets stuck, please keep going <br/>
-            it should fix itself once it's selected again
-        </p>
+        <p> High score </p>
+        <p id="highScore"> </p>
 
     </div>
 
@@ -38,6 +35,14 @@
         <input type="button" class="button" id="botRight" value=3>
         <input type="button" class="button" id="botCenter" value=0>
         
+        <div id="loseScreen">
+            <p> You lose!</p>
+            <p> Your score was</p>
+            <p id="finalScore"> </p>
+            <button id="closeButton"> Close </button>
+        </div>
+
+
     </div>
 
     <script src="script.js"></script>
