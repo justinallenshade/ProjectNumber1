@@ -10,7 +10,7 @@ const startButton = document.querySelector('#startButton');
 const loseScreen = document.querySelector("#loseScreen");
 const closeButton = document.querySelector('#closeButton');
 const finalScore = document.querySelector('#finalScore');
-
+const highScore = document.querySelector('#highScore');
 
 let closeScreen = () => {
     loseScreen.style.zIndex = "-1";
@@ -32,7 +32,7 @@ let removeListener = () =>{
 }
 addListener();
 
-let highScore = [];
+let bestScore = [];
 let user = [];
 let computer = [];
 let onStart = [0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4]
@@ -81,7 +81,6 @@ async function startUp(){
 }
 startUp();
 
-
 async function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -90,13 +89,6 @@ async function computerChoice (){
     let randomNum = Math.floor(Math.random()*5);
     computer.push(randomNum);
     currentScore.innerText = computer.length -1;
-
-
-    if (computer.length > highScore.length){
-        for(let i=0; i <computer.length; i++){
-            
-        }
-    }
 
     removeListener();
     for(let i=0; i< computer.length; i++){
@@ -139,7 +131,6 @@ async function computerChoice (){
     }
     addListener();
 
-    console.log(`the computer array is ${computer}`)
     startButton.removeEventListener("click", computerChoice)
 }
 
@@ -178,8 +169,6 @@ async function buttonClick(event){
     }
     addListener();
 
-    console.log(`button Clicked ${user}`)
-
     if(user.length == computer.length && computer.length !== 0){
         compareArray();
         user = [];
@@ -195,6 +184,7 @@ async function buttonClick(event){
 
 function compareArray(){
     for (let i = 0; i <= computer.length; i++){
+
         if(user[i] != computer[i]){
             loseScreen.style.zIndex = "1";
             loseScreen.style.opacity = "1"
@@ -203,4 +193,10 @@ function compareArray(){
             startButton.addEventListener('click', computerChoice);
         }
     }
+
+    if (computer.length > bestScore.length -1){
+        highScore.innerText = computer.length
+        bestScore = computer
+     }
+
 }
