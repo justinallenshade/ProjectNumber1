@@ -15,6 +15,7 @@ const highScore = document.querySelector('#highScore');
 let closeScreen = () => {
     loseScreen.style.zIndex = "-1";
     loseScreen.style.opacity = "0"
+    startButton.addEventListener('click', computerChoice);
 }
 
 closeButton.addEventListener('click', closeScreen);
@@ -190,7 +191,6 @@ function compareArray(){
             loseScreen.style.opacity = "1"
             finalScore.innerText = computer.length -1;
             computer = [];
-            startButton.addEventListener('click', computerChoice);
         }
     }
 
