@@ -94,15 +94,7 @@ async function API (event){
     if (randPic == 13){
         randPic+=1
     }
-
     const FinalSpace = `https://finalspaceapi.com/api/v0/character/${randPic}`;
-    const PokemonTCG = `https://api.pokemontcg.io/v1/cards`;
-   
-    
-
-
-
-
 
     fetch(FinalSpace)
     .then(res => res.json())
@@ -111,6 +103,22 @@ async function API (event){
         spaceAPI.src = res.img_url
     })
     .catch(err => console.log("something is wrong", err))
+
+
+
+    let rickPic = Math.ceil(Math.random()*671)
+    
+
+    const rickMorty = `https://rickandmortyapi.com/api/character/${rickPic}`;
+   
+    fetch(rickMorty)
+    .then(res2 => res2.json())
+    .then((res2)=> {
+        const Sanchez = document.querySelector(`#Sanchez`);
+        Sanchez.src = res2.image
+    });
+
+
 };
 
 async function computerChoice (){
@@ -220,6 +228,7 @@ function compareArray(){
             loseScreen.style.opacity = "1"
             finalScore.innerText = computer.length -1;
             computer = [];
+            currentScore.innerText = "0"
         }
     }
 
