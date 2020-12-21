@@ -6,7 +6,6 @@ const botLeft = document.querySelector(`#botLeft`);
 const botCenter = document.querySelector(`#botCenter`);
 const currentScore = document.querySelector('#currentScore');
 const startButton = document.querySelector('#startButton');
-
 const loseScreen = document.querySelector("#loseScreen");
 const closeButton = document.querySelector('#closeButton');
 const finalScore = document.querySelector('#finalScore');
@@ -16,7 +15,7 @@ let closeScreen = () => {
     loseScreen.style.zIndex = "-1";
     loseScreen.style.opacity = "0"
     startButton.addEventListener('click', computerChoice);
-}
+};
 
 closeButton.addEventListener('click', closeScreen);
 startButton.addEventListener('click', computerChoice);
@@ -25,22 +24,24 @@ let addListener  = () =>{
     button.forEach(button => {
         button.addEventListener('click', buttonClick);
     })
-}
+};
 let removeListener = () =>{
     button.forEach(button => {
         button.removeEventListener(`click`, buttonClick);
     })
-}
+};
 addListener();
 
 let bestScore = [];
 let user = [];
 let computer = [];
-let onStart = [0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4]
+let onStart = [0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4];
 
 async function startUp(){
     for(let i=0; i< onStart.length; i++){
         removeListener();
+        startButton.removeEventListener("click", computerChoice);
+
         if (onStart[i] == 0){
             botCenter.style.animationDuration = ".25s"
             botCenter.style.animationPlayState = "running";
@@ -78,18 +79,46 @@ async function startUp(){
             botLeft.style.animationDuration = "1s"
         }
         addListener();
+        startButton.addEventListener('click', computerChoice);
     }
 }
 startUp();
 
 async function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
-}
+};
+
+async function API (event){
+   
+    let randPic = Math.ceil(Math.random()*40);
+    if (randPic == 13){
+        randPic+=1
+    }
+
+    const FinalSpace = `https://finalspaceapi.com/api/v0/character/${randPic}`;
+    const PokemonTCG = `https://api.pokemontcg.io/v1/cards`;
+   
+    
+
+
+
+
+
+    fetch(FinalSpace)
+    .then(res => res.json())
+    .then((res) => {
+        const spaceAPI = document.querySelector(`#finalSpace`);
+        spaceAPI.src = res.img_url
+    })
+    .catch(err => console.log("something is wrong", err))
+};
 
 async function computerChoice (){
     let randomNum = Math.floor(Math.random()*5);
     computer.push(randomNum);
     currentScore.innerText = computer.length -1;
+    startButton.removeEventListener("click", computerChoice);
+    API();
 
     removeListener();
     for(let i=0; i< computer.length; i++){
@@ -127,17 +156,15 @@ async function computerChoice (){
             await sleep(1000);
             botLeft.style.animationPlayState = "paused";
             await sleep(250);
-            
         }
     }
     addListener();
 
-    startButton.removeEventListener("click", computerChoice)
-}
+    console.log(`the cheat code is ${computer}`)
+};
 
 async function buttonClick(event){
 
-    
     let userClick = event.target.value
     user.push(userClick);
    
@@ -170,6 +197,7 @@ async function buttonClick(event){
     }
     addListener();
 
+    
     if(user.length == computer.length && computer.length !== 0){
         compareArray();
         user = [];
@@ -181,6 +209,7 @@ async function buttonClick(event){
     if (user.length >= 1 && computer.length == 0){
         user = []
     }
+
 };
 
 function compareArray(){
@@ -199,4 +228,4 @@ function compareArray(){
         bestScore = computer
      }
 
-}
+};
