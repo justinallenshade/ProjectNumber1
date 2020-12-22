@@ -1,4 +1,4 @@
-
+/* all the keyframes needed */
  @keyframes glowPurple {
     0% {
         
@@ -65,6 +65,7 @@
     }
 }
 
+/* organizes whole page and sets the background color */
 body{
     background-color: rgb(13, 209, 199);
     text-align: center;
@@ -74,6 +75,7 @@ body{
     font-family: 'Ewert', cursive;
 }
 
+/* places and styles the heading */
 .heading{
     grid-row: 1/2;
     grid-column: 1/4;
@@ -100,7 +102,7 @@ body{
     color: rgb(28, 12, 116);
 }
 
-
+/* highscore and current score styling */
 .leftSection{
     text-align: center;
     grid-row: 2/3;
@@ -118,7 +120,8 @@ body{
 
 
 
-
+/* the game button animation assignment 
+    and button layout */
 #gameWhole {
     display: grid;
     justify-content: center;
@@ -181,6 +184,7 @@ body{
     animation-play-state: paused;
 }
 
+/* the lose screen styling */
 #loseScreen{
     background-color: rgba(27, 18, 104, 0.986);
     box-shadow: 0 0 5px 5px silver, 0 0 25px 25px black ;

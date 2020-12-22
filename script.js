@@ -1,3 +1,4 @@
+// all declared selectors 
 const button = document.querySelectorAll(`.button`);
 const topRight = document.querySelector(`#topRight`);
 const topLeft = document.querySelector(`#topLeft`);
@@ -12,45 +13,56 @@ const finalScore = document.querySelector('#finalScore');
 const highScore = document.querySelector('#highScore');
 const turn=document.querySelector(`#turn`);
 
+// closing screen button function
+// adds start button functionality again
 let closeScreen = () => {
     loseScreen.style.zIndex = "-1";
     loseScreen.style.opacity = "0"
     startButton.addEventListener('click', computerChoice);
 };
-
+// gives start button a pointer on mouseover
 let startClose = () => {
     startButton.style.cursor = "pointer";
 }
 
+// adds the base event listeners
 closeButton.addEventListener('click', closeScreen);
 startButton.addEventListener('click', computerChoice);
 startButton.addEventListener(`mouseover`, startClose);
 
-
+// adds the pointer to the game buttons
 let curseOver = () => {
    button.forEach(button => {
         button.style.cursor = "pointer";
    })
 }
 
+//adds event listeners to both the game buttons and mouseover
 let addListener  = () =>{
     button.forEach(button => {
         button.addEventListener('click', buttonClick);
         button.addEventListener(`mouseover`, curseOver);
     })
 };
+
+// function to remove the event listeners of the game
 let removeListener = () =>{
     button.forEach(button => {
         button.removeEventListener(`click`, buttonClick);
     })
 };
+
+//initalizes the buttons clickability
 addListener();
 
+// defines the blank arrays needed and startup pattern
 let bestScore = [];
 let user = [];
 let computer = [];
 let onStart = [0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4];
 
+// adds the runthough of the startup animations to the begining
+// of the code. this prevents the animation bugs
 async function startUp(){
     for(let i=0; i< onStart.length; i++){
         removeListener();
@@ -99,10 +111,13 @@ async function startUp(){
 }
 startUp();
 
+// sleep function to pause the code so the animations can run
+// in order without overlap
 async function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 };
 
+// adds the APIS 
 async function API (event){
    
     let randPic = Math.ceil(Math.random()*40);
@@ -136,6 +151,9 @@ async function API (event){
 
 };
 
+// adds the computers functionality along with
+// timing the turns and api pictures 
+// the cheat codes ar in here as well
 async function computerChoice (){
     let randomNum = Math.floor(Math.random()*5);
     computer.push(randomNum);
@@ -192,6 +210,9 @@ async function computerChoice (){
     // console.log(`the cheat code is ${computer}`)
 };
 
+// displays and records user input
+// calls the compare function
+// controls the user array along with running the game again
 async function buttonClick(event){
 
     let userClick = event.target.value
@@ -241,6 +262,9 @@ async function buttonClick(event){
 
 };
 
+// compares the user and computer arrays 
+// displays the lose screen along with 
+// updates the highscore
 function compareArray(){
     for (let i = 0; i <= computer.length; i++){
 
