@@ -10,6 +10,7 @@ const loseScreen = document.querySelector("#loseScreen");
 const closeButton = document.querySelector('#closeButton');
 const finalScore = document.querySelector('#finalScore');
 const highScore = document.querySelector('#highScore');
+const turn=document.querySelector(`#turn`);
 
 let closeScreen = () => {
     loseScreen.style.zIndex = "-1";
@@ -17,12 +18,25 @@ let closeScreen = () => {
     startButton.addEventListener('click', computerChoice);
 };
 
+let startClose = () => {
+    startButton.style.cursor = "pointer";
+}
+
 closeButton.addEventListener('click', closeScreen);
 startButton.addEventListener('click', computerChoice);
+startButton.addEventListener(`mouseover`, startClose);
+
+
+let curseOver = () => {
+   button.forEach(button => {
+        button.style.cursor = "pointer";
+   })
+}
 
 let addListener  = () =>{
     button.forEach(button => {
         button.addEventListener('click', buttonClick);
+        button.addEventListener(`mouseover`, curseOver);
     })
 };
 let removeListener = () =>{
@@ -41,6 +55,7 @@ async function startUp(){
     for(let i=0; i< onStart.length; i++){
         removeListener();
         startButton.removeEventListener("click", computerChoice);
+        
 
         if (onStart[i] == 0){
             botCenter.style.animationDuration = ".25s"
@@ -125,8 +140,13 @@ async function computerChoice (){
     let randomNum = Math.floor(Math.random()*5);
     computer.push(randomNum);
     currentScore.innerText = computer.length -1;
+
     startButton.removeEventListener("click", computerChoice);
+    
+
     API();
+    turn.innerText = `Computer please wait`
+    
 
     removeListener();
     for(let i=0; i< computer.length; i++){
@@ -167,8 +187,9 @@ async function computerChoice (){
         }
     }
     addListener();
+    turn.innerText = `Player`
 
-    console.log(`the cheat code is ${computer}`)
+    // console.log(`the cheat code is ${computer}`)
 };
 
 async function buttonClick(event){
@@ -224,6 +245,7 @@ function compareArray(){
     for (let i = 0; i <= computer.length; i++){
 
         if(user[i] != computer[i]){
+            closeButton.style.cursor = "pointer";
             loseScreen.style.zIndex = "1";
             loseScreen.style.opacity = "1"
             finalScore.innerText = computer.length -1;

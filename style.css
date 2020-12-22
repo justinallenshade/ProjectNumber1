@@ -95,6 +95,11 @@ body{
     font-family: 'Ewert', cursive;
 }
 
+#turn{
+    font-size: 20px;
+    color: rgb(28, 12, 116);
+}
+
 
 .leftSection{
     text-align: center;
