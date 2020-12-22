@@ -1,6 +1,6 @@
 # ProjectNumber1
 
-![image of app](https://user-images.githubusercontent.com/74937340/102829360-88978780-43ac-11eb-8c4c-dfd9c3a7b0bf.png) <br/>
+![image of app](https://user-images.githubusercontent.com/74937340/102915483-846c7800-4447-11eb-9a63-cd7df651dd84.png) <br/>
 
 ## Main tech used <br/>
 *Visual studio code <br/>
