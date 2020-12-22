@@ -1,5 +1,5 @@
 # ProjectNumber1
-
+![christmas gif](https://d2mn9dr0jv4622.cloudfront.net/wp-content/uploads/2017/12/20070532/binary-tree2.gif)
 ![image of app](https://user-images.githubusercontent.com/74937340/102915483-846c7800-4447-11eb-9a63-cd7df651dd84.png) <br/>
 
 ## Main tech used <br/>
