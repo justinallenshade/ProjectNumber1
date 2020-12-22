@@ -14,7 +14,6 @@ const highScore = document.querySelector('#highScore');
 const turn=document.querySelector(`#turn`);
 
 // closing screen button function
-// adds start button functionality again
 let closeScreen = () => {
     loseScreen.style.zIndex = "-1";
     loseScreen.style.opacity = "0"
@@ -263,8 +262,7 @@ async function buttonClick(event){
 };
 
 // compares the user and computer arrays 
-// displays the lose screen along with 
-// updates the highscore
+// displays the lose screen along with resetting game
 function compareArray(){
     for (let i = 0; i <= computer.length; i++){
 
