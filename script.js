@@ -1,3 +1,5 @@
+//project 1 simon
+
 // all declared selectors 
 const button = document.querySelectorAll(`.button`);
 const topRight = document.querySelector(`#topRight`);
@@ -113,7 +115,7 @@ startUp();
 // sleep function to pause the code so the animations can run
 // in order without overlap
 async function sleep(ms){
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(exit => setTimeout(exit, ms));
 };
 
 // adds the APIS 
